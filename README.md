@@ -93,6 +93,9 @@ The RAG process is defined using Langchain's LCEL [Langchain Expression Language
 
 ### Azure Functions (optional)
 
+> [!NOTE]  
+> Azure functions will operate on existing rows, treating them as `new rows` to generate embeddings.To avoid redundant processing, delete the file `070-update_product_emebddings.sql` during database deployment.
+
 In order to automate the process of generating the embeddings, you can use the Azure Functions. Thanks to [Azure SQL Trigger Binding](https://learn.microsoft.com/azure/azure-functions/functions-bindings-azure-sql-trigger), it is  possible to have tables monitored for changes and then react to those changes by executing some code in the Azure Function itself. As a result it is possible to automate the process of generating the embeddings and storing them in the database.
 
 In a perfect microservices architecture, the Azure Functions are written in C#, but you can easily create the same solutoin using Python, Node.js or any other supported language.
