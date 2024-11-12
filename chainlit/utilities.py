@@ -26,7 +26,7 @@ def get_mssql_connection(source_variable_name: str) -> pyodbc.Connection:
     return conn
 
 def get_relevant_products(search_text:str) -> str:
-    conn = get_mssql_connection("AZURE_SQL_CONNECTION_STRING")
+    conn = get_mssql_connection("FABRIC_SQL_CONNECTION_STRING")
     logging.info("Querying MSSQL...")
     logging.info(f"Message content: '{search_text}'")
     try:        
