@@ -32,6 +32,8 @@ namespace Database.Deploy
             conn.Open();
             conn.Close();
 
+            Console.WriteLine("Connection Tested successfully.");
+
             FileSystemScriptOptions options = new() {
                 IncludeSubDirectories = false,
                 Extensions = ["*.sql"],
@@ -42,10 +44,8 @@ namespace Database.Deploy
                 {"OPENAI_URL", Env.GetString("OPENAI_URL")},
                 {"OPENAI_KEY", Env.GetString("OPENAI_KEY")},
                 {"OPENAI_MODEL", Env.GetString("OPENAI_MODEL")},
-                {"PRODUCT_FILE_PATH", Env.GetString("PRODUCT_FILE_PATH") ?? Directory.GetCurrentDirectory() + "\\products.csv"}
-   
-            };
-            Console.WriteLine(variables["PRODUCT_FILE_PATH"]);
+                {"ENCRYPTION_PASSWORD", Env.GetString("ENCRYPTION_PASSWORD")}   
+            };         
 
             Console.WriteLine("Starting deployment...");
             var dbup = DeployChanges.To

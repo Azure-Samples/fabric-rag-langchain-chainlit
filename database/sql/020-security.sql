@@ -1,7 +1,7 @@
 -- need to either use dbup or replace every $OPENAI_URL$ with the actual url
 if not exists(select * from sys.symmetric_keys where [name] = '##MS_DatabaseMasterKey##')
 begin
-    create master key encryption by password = N'V3RYStr0NGP@ssw0rd!';
+    create master key encryption by password = N'$ENCRYPTION_PASSWORD$';
 end
 go
 
