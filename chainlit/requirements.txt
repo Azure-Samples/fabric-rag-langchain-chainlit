@@ -1,6 +1,7 @@
-chainlit
-langchain
-langchain_openai
-python-dotenv
-pyodbc
-azure-identity
+pydantic==2.9.2 # override transitive dependency that appears to be causing issues
+chainlit==1.3.2
+langchain==0.3.7
+langchain_openai==0.2.8
+python-dotenv==1.0.1
+pyodbc==5.2.0
+azure-identity==1.19.0
