@@ -60,7 +60,7 @@ If you want to deploy the database manually, make sure to execute the script in 
 
 Chainlit solution is in `chainlit` folder. Move into the folder, create a virtual environment and install the requirements:
 
-> [!Python Version Compatibility]  
+> [!Note]  
 > This Chainlit app works best with Python 3.12, While Python 3.13 is supported, additional tool installation may be required to build NumPy from source. Refer to the NumPy documentation for detailed instructions.
 https://numpy.org/doc/stable/building/index.html#building-from-source
 
@@ -95,7 +95,7 @@ You'll see that Langchain will call the function `get_relevant_products` that be
 
 #### SQL DB Connection Error
 
-Ocassionally, you may encounter a SQL authentication error. In this case, you will need to configure your `.env` file to use a connection token configuration `CONN_TOKEN` for authentication. To obtain the token value follow these steps :
+Occasionally, you may encounter a SQL authentication error. In this case, you will need to configure your `.env` file to use a connection token configuration `CONN_TOKEN` for authentication. To obtain the token value follow these steps :
 
 Open a terminal window and execute the following `azure cli` command,
 
