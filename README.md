@@ -95,14 +95,14 @@ You'll see that Langchain will call the function `get_relevant_products` that be
 
 #### SQL DB Connection Error
 
-Occasionally, you may encounter a SQL authentication error. In this case, you will need to configure your `.env` file to use a connection token configuration `CONN_TOKEN` for authentication. To obtain the token value follow these steps :
+Occasionally, you may encounter a SQL authentication error. In this case, you will need to configure your `.env` file to use a connection token configuration `CONN_TOKEN` for authentication. To generate the token value follow these steps :
 
 Open a terminal window and execute the following `azure cli` command,
 
 ```bash
 az login
 ```
-Select the subscription and then execute the follow command to generate the token,
+Select the subscription and then execute the following command to generate a token,
 
 ```bash
 az account get-access-token --resource https://database.windows.net
