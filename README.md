@@ -60,6 +60,10 @@ If you want to deploy the database manually, make sure to execute the script in 
 
 Chainlit solution is in `chainlit` folder. Move into the folder, create a virtual environment and install the requirements:
 
+> [!Python Version Compatibility]  
+> This Chainlit app works best with Python 3.12, While Python 3.13 is supported, additional tool installation may be required to build NumPy from source. Refer to the NumPy documentation for detailed instructions.
+https://numpy.org/doc/stable/building/index.html#building-from-source
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -74,6 +78,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+
 Then make sure to create a `.env` file in the `/chainlit` folder starting from the `.env.example` file and it with your own values, then run the chainlit solution:
 
 ```bash
@@ -87,6 +92,24 @@ Looking for a wireless charger any recommendation ?
 ```
 
 You'll see that Langchain will call the function `get_relevant_products` that behind the scenes connects to the database and exceute the stored procedure `dbo.find_relevant_products` which perform vector search on database data.
+
+#### SQL DB Connection Error
+
+Ocassionally, you may encounter a SQL authentication error. In this case, you will need to configure your `.env` file to use a connection token configuration `CONN_TOKEN` for authentication. To obtain the token value follow these steps :
+
+Open a terminal window and execute the following `azure cli` command,
+
+```bash
+az login
+```
+Select the subscription and then execute the follow command to generate the token,
+
+```bash
+az account get-access-token --resource https://database.windows.net
+```
+
+> [!Note]                         
+> The token expires one hour after it is obtained and must be regenerated.
 
 The RAG process is defined using Langchain's LCEL [Langchain Expression Language](https://python.langchain.com/v0.1/docs/expression_language/) that can be easily extended to include more complex logic, even including complex agent actions with the aid of [LangGraph](https://langchain-ai.github.io/langgraph/), where the function calling the stored procedure will be a [tool](https://langchain-ai.github.io/langgraph/how-tos/tool-calling/?h=tool) available to the agent.
 
@@ -108,3 +131,4 @@ func start
 ```
 
 the Azure Function will monitor the configured tables for changes and automatically call the Azure OpenAI endpoint to generate the embeddings for the new or updated data.
+
